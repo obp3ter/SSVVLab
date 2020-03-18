@@ -22,15 +22,15 @@ public class StudentXMLServiceTest {
     @Rule
     public ExpectedException thrown = ExpectedException.none();
 
-    StudentXMLService studentXMLService = spy(
-            new StudentXMLService(new StudentXMLRepo(new StudentValidator(), "Studfile.txt")));
+    StudentXMLRepo repo = spy(new StudentXMLRepo(new StudentValidator(), "Studfile.txt"));
+    StudentXMLService studentXMLService = spy(new StudentXMLService(repo));
 
     @SneakyThrows
     @Test
     public void addTest() {
         String[] sa = { "1", "a", "1", "a", "b" };
         studentXMLService.add(sa);
-        verify(studentXMLService).add(any());
+        verify(repo).save(any());
     }
 
     @SneakyThrows
@@ -40,7 +40,6 @@ public class StudentXMLServiceTest {
         thrown.expect(ValidatorException.class);
         thrown.expectMessage("Grupa invalid");
         studentXMLService.add(sa);
-        verify(studentXMLService).add(any());
     }
 
 }
