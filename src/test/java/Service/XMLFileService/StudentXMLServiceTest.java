@@ -36,7 +36,7 @@ public class StudentXMLServiceTest {
     @SneakyThrows
     @Test
     public void badIDAddTest() {
-        String[] sa = { "ab", "a", "1a", "a", "b" };
+        String[] sa = { "ab", "a", "1a", "aaa", "b" };
         thrown.expect(ValidatorException.class);
         thrown.expectMessage("Grupa invalid");
         studentXMLService.add(sa);
