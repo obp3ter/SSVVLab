@@ -37,12 +37,13 @@ public class StudentXMLServiceTest {
 //        verify(repo).save(any());
     }
 
-//    @Test
-//    public void badIDAddTest() throws ValidatorException {
-//        String[] sa = { "ab", "a", "1a", "aaa", "b" };
-//        thrown.expect(ValidatorException.class);
-//        thrown.expectMessage("Grupa invalid");
-//    }
+    @Test
+    public void badIDAddTest() throws ValidatorException {
+        String[] sa = { "ab", "a", "1a", "aaa", "b" };
+        thrown.expect(ValidatorException.class);
+        thrown.expectMessage("Grupa invalid");
+        studentXMLService.add(sa);
+    }
 
     @Test
     public void conditionCoverageAddTest() throws ValidatorException {
