@@ -27,6 +27,14 @@ public class TemaLabXMLServiceTest {
         assertNotNull(temaLabXMLService.findOne(1));
     }
     @Test
+    public void testAddAssignmentInvalidId() throws ValidatorException
+    {
+        String[] sa = { "-1", "afasf", "1", "5" };
+        thrown.expect(ValidatorException.class);
+        thrown.expectMessage("Nr tema invalid");
+        temaLabXMLService.add(sa);
+    }
+    @Test
     public void testAddAssignmentInvalidDeliveryWeek() throws ValidatorException
     {
         String[] sa = {"2", "afasf", "1", "15" };
