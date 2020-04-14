@@ -64,5 +64,32 @@ public class TemaLabXMLServiceTest {
 
     }
 
+    @Test
+    public void testAddAssignmentIdNaN() throws ValidatorException
+    {
+        String[] sa = { "a", "afasf", "1", "5" };
+        thrown.expect(NumberFormatException.class);
+        thrown.expectMessage("For input string: \"a\"");
+        temaLabXMLService.add(sa);
+    }
+
+    @Test
+    public void testAddAssignmentDeliveryWeekNaN() throws ValidatorException
+    {
+        String[] sa = { "1", "afasf", "a", "5" };
+        thrown.expect(NumberFormatException.class);
+        thrown.expectMessage("For input string: \"a\"");
+        temaLabXMLService.add(sa);
+    }
+
+    @Test
+    public void testAddAssignmentDeadlineNaN() throws ValidatorException
+    {
+        String[] sa = { "1", "afasf", "1", "a" };
+        thrown.expect(NumberFormatException.class);
+        thrown.expectMessage("For input string: \"a\"");
+        temaLabXMLService.add(sa);
+    }
+
 
 }
